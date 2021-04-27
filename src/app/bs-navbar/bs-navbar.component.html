@@ -22,10 +22,10 @@
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
       </ng-template>
-
+      <!-- define *ngIf class below as public because AoT compiler will expect these fields to be public  -->
       <li
         ngbDropdown
-        *ngIf="user$ | async as user; else anonymousUser"
+        *ngIf="auth.user$ | async as user; else anonymousUser"
         class="nav-item dropdown"
       >
         <a
