@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
@@ -24,7 +25,7 @@ import { LoginComponent } from './login/login.component';
     NgbModule,
     AppRoutingModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
