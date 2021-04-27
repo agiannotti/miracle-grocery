@@ -28,11 +28,11 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
-    AppRoutingModule,
   ],
 
   providers: [UserService, AuthService, AuthGuard, AdminAuthGuard],
