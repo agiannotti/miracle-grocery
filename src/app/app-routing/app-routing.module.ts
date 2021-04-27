@@ -11,6 +11,7 @@ import { HomeComponent } from './../home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AdminAuthGuard } from '../services/admin-auth-guard/admin-auth-guard.service';
+import { ProductFormComponent } from '../admin/product-form/product-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-  { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+  { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
   {
     path: 'order-success',
     component: OrderSuccessComponent,
@@ -27,12 +28,17 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin/admin-products',
+    path: 'admin/products',
     component: AdminProductsComponent,
     canActivate: [AuthGuard, AdminAuthGuard],
   },
   {
-    path: 'admin/admin-orders',
+    path: 'admin/products/new',
+    component: ProductFormComponent,
+    canActivate: [AuthGuard, AdminAuthGuard],
+  },
+  {
+    path: 'admin/orders',
     component: AdminOrdersComponent,
     canActivate: [AuthGuard, AdminAuthGuard],
   },
