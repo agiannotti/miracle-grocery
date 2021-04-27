@@ -1,5 +1,5 @@
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
+import { AuthGuard } from './services/auth-guard/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';

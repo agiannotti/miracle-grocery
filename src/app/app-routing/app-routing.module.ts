@@ -1,4 +1,4 @@
-import { AuthGuard } from './../auth-guard.service';
+import { AuthGuard } from './../services/auth-guard/auth-guard.service';
 import { MyOrdersComponent } from './../my-orders/my-orders.component';
 import { AdminOrdersComponent } from './../admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './../admin/admin-products/admin-products.component';
