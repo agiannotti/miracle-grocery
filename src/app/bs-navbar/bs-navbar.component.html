@@ -25,7 +25,7 @@
       <!-- define *ngIf class below as public because AoT compiler will expect these fields to be public  -->
       <li
         ngbDropdown
-        *ngIf="auth.user$ | async as user; else anonymousUser"
+        *ngIf="appUser; else anonymousUser"
         class="nav-item dropdown"
       >
         <a
@@ -35,20 +35,17 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
-          >{{ user.displayName }}</a
+          >{{ appUser.name }}</a
         >
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-          <a
-            class="dropdown-item"
-            routerLink="my-orders"
-            routerLinkActive="active"
-            >My Orders</a
-          >
-          <a class="dropdown-item" routerLink="/admin/admin-orders"
-            >Manage Orders</a
-          >
-          <a class="dropdown-item" routerLink="/admin/admin-products"
-            >Manage Products</a
+          <a class="dropdown-item" routerLink="my-orders">My Orders</a>
+          <ng-container *ngIf="appUser.isAdmin">
+            <a class="dropdown-item" routerLink="/admin/admin-orders"
+              >Manage Orders</a
+            >
+            <a class="dropdown-item" routerLink="/admin/admin-products"
+              >Manage Products</a
+            ></ng-container
           >
           <a class="dropdown-item" (click)="logout()">Log Out</a>
         </div>

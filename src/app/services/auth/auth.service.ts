@@ -1,9 +1,12 @@
+import { AppUser } from './../../models/app-user';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
+import { switchMap } from 'rxjs/operators';
 import 'firebase/auth';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +17,11 @@ export class AuthService {
   user$: Observable<firebase.User>;
   // be aware we are leaking a sensitive property in our observable, and in a future implementation we need to extract a users component
   //
-  constructor(private afAuth: AngularFireAuth, private route: ActivatedRoute) {
+  constructor(
+    private userService: UserService,
+    private afAuth: AngularFireAuth,
+    private route: ActivatedRoute
+  ) {
     this.user$ = afAuth.authState;
   }
 
@@ -30,5 +37,16 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut();
+  }
+
+  get appUser$(): Observable<AppUser> {
+    return this.user$.pipe(
+      // switchMap((user) => this.userService.get(user.uid).valueChanges())
+      switchMap((user) => {
+        if (user) return this.userService.get(user.uid).valueChanges();
+
+        return of(null);
+      })
+    );
   }
 }
