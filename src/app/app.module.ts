@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -15,7 +14,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 @NgModule({
   declarations: [AppComponent, BsNavbarComponent],
   imports: [
-    BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
