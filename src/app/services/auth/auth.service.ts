@@ -44,7 +44,6 @@ export class AuthService {
       // switchMap((user) => this.userService.get(user.uid).valueChanges())
       switchMap((user) => {
         if (user) return this.userService.get(user.uid).valueChanges();
-
         return of(null);
       })
     );

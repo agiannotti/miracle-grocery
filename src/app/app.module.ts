@@ -27,9 +27,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     ProductFormComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    BrowserModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
