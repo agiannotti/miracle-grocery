@@ -1,5 +1,6 @@
 import { CategoryService } from '../../shared/services/category.service';
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'product-form',
@@ -9,8 +10,14 @@ import { Component } from '@angular/core';
 export class ProductFormComponent {
   categories;
 
-  constructor(categoryService: CategoryService) {
+  constructor(
+    private productService: ProductService,
+    categoryService: CategoryService
+  ) {
     this.categories = categoryService.getCategories();
-    console.log(this.categories);
+  }
+
+  save(product) {
+    this.productService.create(product);
   }
 }

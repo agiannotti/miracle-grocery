@@ -1,3 +1,4 @@
+import { ProductService } from './shared/services/product.service';
 import { AdminModule } from './admin/admin.module';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AuthGuard } from './shared/services/auth-guard.service';
@@ -18,12 +19,14 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './shared/services/user.service';
 import { CategoryService } from './shared/services/category.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, BsNavbarComponent, LoginComponent],
   imports: [
     AppRoutingModule,
     AdminModule,
+    FormsModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -36,7 +39,9 @@ import { CategoryService } from './shared/services/category.service';
     AuthService,
     AuthGuard,
     AdminAuthGuard,
+    UserService,
     CategoryService,
+    ProductService,
   ],
   bootstrap: [AppComponent],
 })

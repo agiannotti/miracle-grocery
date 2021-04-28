@@ -1,4 +1,8 @@
+import { ProductService } from './../shared/services/product.service';
+import { CategoryService } from './../shared/services/category.service';
+import { UserService } from './../shared/services/user.service';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from '../shared/services/auth-guard.service';
@@ -28,5 +32,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [FormsModule, UserService, CategoryService, ProductService],
 })
 export class AppRoutingModule {}
