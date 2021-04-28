@@ -1,4 +1,3 @@
-import { RouterModule } from '@angular/router';
 import { AdminAuthGuard } from './services/admin-auth-guard/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
@@ -17,19 +16,13 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BsNavbarComponent,
-    LoginComponent,
-    ProductFormComponent,
-  ],
+  declarations: [AppComponent, BsNavbarComponent, LoginComponent],
   imports: [
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,

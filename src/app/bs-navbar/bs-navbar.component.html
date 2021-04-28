@@ -38,15 +38,15 @@
           >{{ appUser.name }}</a
         >
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" routerLink="my/orders">My Orders</a>
-          <ng-container *ngIf="appUser.isAdmin">
+          <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+          <div *ngIf="appUser.isAdmin">
             <a class="dropdown-item" routerLink="/admin/orders"
               >Manage Orders</a
             >
             <a class="dropdown-item" routerLink="/admin/products"
               >Manage Products</a
-            ></ng-container
-          >
+            >
+          </div>
           <a class="dropdown-item" (click)="logout()">Log Out</a>
         </div>
       </li>

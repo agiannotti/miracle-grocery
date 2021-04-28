@@ -16,13 +16,17 @@ export class AppComponent {
   ) {
     // subscription is ok here without on destroy interface
     auth.user$.subscribe((user) => {
-      if (user) {
-        // we currently do not have registration to make .save more efficient
-        // simply ensures up to date name is in DB
-        userService.save(user);
-        let returnUrl = localStorage.getItem('returnUrl');
-        router.navigateByUrl(returnUrl);
-      }
+      if (!user) return;
+
+      // we currently do not have registration to make .save more efficient
+      // simply ensures up to date name is in DB
+      userService.save(user);
+
+      let returnUrl = localStorage.getItem('returnUrl');
+      if (!returnUrl) return;
+
+      localStorage.removeItem('returnUrl');
+      router.navigateByUrl(returnUrl);
     });
   }
 }
