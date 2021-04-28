@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-form.component.css'],
 })
 export class ProductFormComponent {
-  categories$;
+  categories;
 
   constructor(categoryService: CategoryService) {
-    this.categories$ = categoryService.getCategories();
-    console.log(this.categories$);
+    this.categories = categoryService.getCategories();
+    console.log(this.categories);
   }
 }
