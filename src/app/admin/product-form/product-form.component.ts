@@ -1,6 +1,8 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../shared/services/category.service';
 import { Component } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'product-form',
@@ -9,15 +11,27 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductFormComponent {
   categories;
+  product;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private productService: ProductService,
-    categoryService: CategoryService
+    private categoryService: CategoryService
   ) {
     this.categories = categoryService.getCategories();
+
+    let id = this.route.snapshot.paramMap.get('id');
+    if (id)
+      this.productService
+        .getProduct(id)
+        .pipe(take(1))
+        .subscribe((p) => (this.product = p));
   }
 
   save(product) {
+    this.router.navigate(['/admin/products/']);
     this.productService.create(product);
+    console.log('routed!');
   }
 }
