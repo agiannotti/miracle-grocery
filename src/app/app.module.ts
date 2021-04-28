@@ -1,7 +1,7 @@
 import { AdminModule } from './admin/admin.module';
-import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
-import { AuthGuard } from './services/auth-guard/auth-guard.service';
-import { AuthService } from './services/auth/auth.service';
+import { AdminAuthGuard } from './shared/services/admin-auth-guard.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
+import { AuthService } from './shared/services/auth.service';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,8 +16,8 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
-import { UserService } from './services/user/user.service';
-import { CategoryService } from './category.service';
+import { UserService } from './shared/services/user.service';
+import { CategoryService } from './shared/services/category.service';
 
 @NgModule({
   declarations: [AppComponent, BsNavbarComponent, LoginComponent],
