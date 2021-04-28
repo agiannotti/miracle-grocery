@@ -1,3 +1,4 @@
+import { CategoryService } from './../../category.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,4 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
 })
-export class ProductFormComponent {}
+export class ProductFormComponent {
+  categories$;
+
+  constructor(categoryService: CategoryService) {
+    this.categories$ = categoryService.getCategories();
+    console.log(this.categories$);
+  }
+}

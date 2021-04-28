@@ -1,4 +1,5 @@
-import { AdminAuthGuard } from './services/admin-auth-guard/admin-auth-guard.service';
+import { AdminModule } from './admin/admin.module';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 import { NgModule } from '@angular/core';
@@ -16,11 +17,13 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
+import { CategoryService } from './category.service';
 
 @NgModule({
   declarations: [AppComponent, BsNavbarComponent, LoginComponent],
   imports: [
     AppRoutingModule,
+    AdminModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -28,7 +31,13 @@ import { UserService } from './services/user/user.service';
     NgbModule,
   ],
 
-  providers: [UserService, AuthService, AuthGuard, AdminAuthGuard],
+  providers: [
+    UserService,
+    AuthService,
+    AuthGuard,
+    AdminAuthGuard,
+    CategoryService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
