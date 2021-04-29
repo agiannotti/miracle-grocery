@@ -11,4 +11,8 @@ export class AdminProductsComponent {
   constructor(private productService: ProductService) {
     this.products = this.productService.getAll();
   }
+
+  log(p) {
+    console.log(p);
+  }
 }

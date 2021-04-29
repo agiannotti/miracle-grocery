@@ -46,10 +46,7 @@
           required
         >
           <option value=""></option>
-          <option
-            *ngFor="let c of categories | async"
-            [value]="c.name.toLowerCase()"
-          >
+          <option *ngFor="let c of categories$ | async" [value]="c.value">
             {{ c.name }}
           </option>
         </select>
