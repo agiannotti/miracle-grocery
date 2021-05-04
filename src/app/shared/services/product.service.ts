@@ -1,4 +1,4 @@
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -20,9 +20,8 @@ export class ProductService {
     return this.db.object('/products/' + productId).valueChanges();
     // return console.log(this.db.object('/products/' + productId));
   }
-  productId: Observable<any>;
 
   getDetails(productId) {
-    this.db.object('/products/' + this.productId).valueChanges();
+    return this.db.object('/products/' + productId).valueChanges();
   }
 }
